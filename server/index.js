@@ -10,9 +10,9 @@ app.use(cors);
 const port = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(__dirname + "/dist/"));
+  app.use(express.static(__dirname + "/public/"));
   app.get(/.*/, (req, res) => {
-    return res.sendFile(__dirname + "/dist/index.html");
+    return res.sendFile(__dirname + "/public/index.html");
   });
 }
 app.listen(port, () => {
