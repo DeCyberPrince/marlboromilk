@@ -7,14 +7,15 @@ const app = express();
 app.use(BodyParser.json());
 app.use(cors);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(__dirname + "/public/"));
-  app.get(/.*/, (req, res) => {
-    return res.sendFile(__dirname + "/public/index.html");
-  });
-}
+// app.use(express.static(__dirname + "/public/"));
+// app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
+
+app.get("/", function(req, res) {
+  res.send("Hello World!");
+});
+
 app.listen(port, () => {
   console.log("started at", port);
 });
