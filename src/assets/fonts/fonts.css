@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Bebas Neue";
+  font-weight: normal;
+  src: url("./BebasNeue-Regular.ttf");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-weight: 400;
+  src: url("./PTSans-Regular.ttf");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-weight: 600;
+  src: url("./PTSans-Bold.ttf");
+}
