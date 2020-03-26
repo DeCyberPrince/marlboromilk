@@ -50,7 +50,7 @@ main.covers {
     width: 50%;
     min-height: auto;
     height: auto;
-    max-height: auto;
+    max-height: 50vw;
     background-position: center;
   }
 }
