@@ -48,6 +48,7 @@ main.covers {
   flex-flow: row wrap;
   .cover {
     width: 50%;
+    height: auto;
     background-position: center;
   }
 }

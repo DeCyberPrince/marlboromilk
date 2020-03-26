@@ -7,6 +7,7 @@
       :src="`./assets/video/${video.path}`"
       @mouseenter="play"
       @mouseleave="stop"
+      @loadeddata="log"
     ></video>
   </main>
 </template>
@@ -40,11 +41,15 @@ export default {
   },
   methods: {
     play(e) {
+      e.currentTarget.currentTime = 0;
       e.currentTarget.play();
     },
     stop(e) {
       e.currentTarget.pause();
-      e.currentTarget.currentTime = 0;
+      e.currentTarget.currentTime = 1;
+    },
+    log(e) {
+      e.currentTarget.currentTime = 1;
     }
   },
   components: {}
