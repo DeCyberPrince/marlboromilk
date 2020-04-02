@@ -1,10 +1,18 @@
 @font-face {
-  font-family: "PT Sans";
-  font-weight: 400;
-  src: url("./PTSans-Regular.ttf");
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+  src: url("./Helvetica/HelveticaNeueCyr-UltraLight.woff2") format("woff2"),
+    url("./Helvetica/HelveticaNeueCyr-UltraLight.woff") format("woff");
 }
 @font-face {
-  font-family: "PT Sans";
-  font-weight: 600;
-  src: url("./PTSans-Bold.ttf");
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  src: url("./Helvetica//HelveticaNeueCyr-Roman.woff2") format("woff2"),
+    url("./Helvetica/HelveticaNeueCyr-Roman.woff") format("woff");
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  src: url("./Helvetica/HelveticaNeueCyr-Black.woff2") format("woff2"),
+    url("./Helvetica/HelveticaNeueCyr-Black.woff") format("woff");
 }

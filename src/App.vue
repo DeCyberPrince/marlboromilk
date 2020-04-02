@@ -15,13 +15,6 @@ export default {
 </script>
 
 <style lang="scss">
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "PT Sans", sans;
-}
-body {
-  background: #2d1c2f;
-}
+$yellow: #fbec55;
+$wblack: #2d1c2f;
 </style>
