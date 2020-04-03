@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <top-bar />
-    <transition name="fade">
+    <transition name="swipe" :enter-class="toSide" :leave-to-class="fromSide">
       <keep-alive>
         <router-view />
       </keep-alive>
@@ -14,9 +14,26 @@
 import topBar from "@/components/top-bar";
 import bottomBar from "@/components/bottom-bar";
 export default {
+  data() {
+    return {
+      fromSide: null,
+      toSide: null
+    };
+  },
   components: {
     topBar,
     bottomBar
+  },
+  watch: {
+    $route(to, from) {
+      if (to.meta.order > from.meta.order) {
+        this.fromSide = "left";
+        this.toSide = "right";
+      } else {
+        this.fromSide = "right";
+        this.toSide = "left";
+      }
+    }
   }
 };
 </script>
@@ -34,16 +51,17 @@ body {
 </style>
 
 <style lang="scss">
-.fade-enter-active,
-.fade-leave-active {
+.swipe-enter-active,
+.swipe-leave-active {
   position: absolute;
   width: 100%;
   z-index: 0;
   transition: all 0.5s;
 }
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.left {
+  transform: translateX(-100%);
+}
+.right {
   transform: translateX(100%);
 }
 </style>

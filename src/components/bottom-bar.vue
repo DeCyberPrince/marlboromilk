@@ -31,6 +31,11 @@ nav#bottom-bar {
     display: inline-block;
     color: rgba($color: #2d1c2f, $alpha: 0.25);
     transition: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex: 1;
     &.router-link-exact-active {
       color: rgba($color: #2d1c2f, $alpha: 1);
     }

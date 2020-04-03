@@ -49,7 +49,7 @@ header {
 @media screen and (min-width: 768px) {
   header {
     height: 86px;
-    justify-content: space-between;
+    justify-content: flex-start;
     #logo {
       img {
         height: 100%;
@@ -58,8 +58,7 @@ header {
     }
     nav#top-nav {
       display: flex;
-      flex: 1;
-      justify-content: flex-end;
+      margin: 0 40% 0 calc(40% - 353px);
       a {
         display: inline-block;
         color: rgba($color: #2d1c2f, $alpha: 0.25);

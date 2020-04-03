@@ -11,22 +11,26 @@ const routes = [
   {
     path: "/",
     name: "Covers",
-    component: Covers
+    component: Covers,
+    meta: { order: 1 }
   },
   {
     path: "/GFX",
     name: "GFX",
-    component: GFX
+    component: GFX,
+    meta: { order: 2 }
   },
   {
     path: "/merch",
     name: "merch",
-    component: Merch
+    component: Merch,
+    meta: { order: 3 }
   },
   {
     path: "/contacts",
     name: "contacts",
-    component: Contacts
+    component: Contacts,
+    meta: { order: 4 }
   }
 ];
 
