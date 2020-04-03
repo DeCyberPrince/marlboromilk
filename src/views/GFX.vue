@@ -8,4 +8,13 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+  min-height: 150vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #141414;
+  color: #fbec55;
+}
+</style>

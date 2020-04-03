@@ -1,6 +1,6 @@
 <template>
-  <main id="covers">
-    <h1>Covers</h1>
+  <main id="merch">
+    <h1>Merch</h1>
   </main>
 </template>
 

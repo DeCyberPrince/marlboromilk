@@ -1,6 +1,6 @@
 <template>
-  <main id="covers">
-    <h1>Covers</h1>
+  <main id="contacts">
+    <h1>Contacts</h1>
   </main>
 </template>
 

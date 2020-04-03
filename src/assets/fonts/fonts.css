@@ -12,7 +12,7 @@
 }
 @font-face {
   font-family: "Helvetica Neue";
-  font-weight: 400;
+  font-weight: 600;
   src: url("./Helvetica/HelveticaNeueCyr-Black.woff2") format("woff2"),
     url("./Helvetica/HelveticaNeueCyr-Black.woff") format("woff");
 }
