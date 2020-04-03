@@ -25,9 +25,14 @@ header {
   align-items: center;
   justify-content: center;
   position: fixed;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
   width: 100%;
+  max-width: 100vw;
   background-image: $texture;
   background-size: $textureScale $textureScale;
+  z-index: 10;
   #logo {
     img {
       height: 100%;

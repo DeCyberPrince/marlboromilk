@@ -5,6 +5,7 @@
   text-decoration: none;
   list-style: none;
   font-family: "Helvetica Neue", sans-serif;
+  font-weight: 400;
   scroll-behavior: smooth;
 }
 a {

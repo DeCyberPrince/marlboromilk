@@ -14,15 +14,19 @@ export default {};
 <style lang="scss" scoped>
 nav#bottom-bar {
   position: fixed;
+  backface-visibility: hidden;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
+  max-width: 100vw;
   height: 50px;
   border: 1px solid #000;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: #fbec55;
+  z-index: 10;
   a {
     display: inline-block;
     color: rgba($color: #2d1c2f, $alpha: 0.25);
