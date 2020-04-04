@@ -31,7 +31,6 @@ header {
   max-width: 100vw;
   background-image: $texture;
   background-size: $textureScale $textureScale;
-  backface-visibility: hidden;
   z-index: 10;
   #logo {
     height: 100%;

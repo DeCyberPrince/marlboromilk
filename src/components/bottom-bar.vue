@@ -26,8 +26,6 @@ nav {
   height: 50px;
   background-image: $texture;
   background-size: $textureScale $textureScale;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
   z-index: 10;
   a {
     display: flex;
