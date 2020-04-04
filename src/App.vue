@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import Hammer from "hammerjs";
 import topBar from "@/components/top-bar";
 import bottomBar from "@/components/bottom-bar";
 export default {
@@ -34,6 +35,27 @@ export default {
         this.toSide = "left";
       }
     }
+  },
+  mounted() {
+    if (window.screen.width >= 768) return undefined;
+    var hammertime = new Hammer(this.$el);
+    hammertime.on("swipeleft swiperight", e => {
+      if (e.type === "swipeleft") {
+        let toRoute = this.$router.options.routes.filter(route => {
+          return route.meta.order === this.$route.meta.order + 1;
+        });
+        if (toRoute.length > 0) {
+          this.$router.push(toRoute[0]);
+        }
+      } else {
+        let toRoute = this.$router.options.routes.filter(route => {
+          return route.meta.order === this.$route.meta.order - 1;
+        });
+        if (toRoute.length > 0) {
+          this.$router.push(toRoute[0]);
+        }
+      }
+    });
   }
 };
 </script>
