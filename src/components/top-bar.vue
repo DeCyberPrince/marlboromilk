@@ -17,26 +17,26 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-$texture: url("/assets/img/texture.png");
-$textureScale: 48px;
+@import "../assets/vars.scss";
 header {
-  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  backface-visibility: hidden;
   top: 0;
   left: 0;
+  right: 0;
+  height: 56px;
   width: 100%;
   max-width: 100vw;
   background-image: $texture;
   background-size: $textureScale $textureScale;
+  backface-visibility: hidden;
   z-index: 10;
   #logo {
+    height: 100%;
     img {
       height: 100%;
-      max-height: 56px;
     }
   }
   nav {
@@ -46,39 +46,22 @@ header {
 </style>
 
 <style lang="scss" scoped>
+@import "../assets/vars.scss";
 @media screen and (min-width: 768px) {
   header {
     height: 86px;
     justify-content: flex-start;
-    #logo {
-      img {
-        height: 100%;
-        max-height: 86px;
-      }
-    }
-    nav#top-nav {
+    nav {
       display: flex;
       margin: 0 40% 0 calc(40% - 353px);
       a {
         display: inline-block;
-        color: rgba($color: #2d1c2f, $alpha: 0.25);
+        color: rgba($color: $steelBlue, $alpha: $navButtonsInactiveOpacity);
         margin: 0 1rem;
         transition: 0.4s;
         &.router-link-exact-active {
-          color: rgba($color: #2d1c2f, $alpha: 1);
+          color: rgba($color: $steelBlue, $alpha: 1);
         }
-      }
-    }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-@media screen and (min-width: 1024px) {
-  header {
-    nav {
-      a {
-        margin: 0 2rem;
       }
     }
   }

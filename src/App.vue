@@ -38,52 +38,42 @@ export default {
   },
   mounted() {
     if (window.screen.width >= 768) return undefined;
-    var hammertime = new Hammer(this.$el);
-    hammertime.on("swipeleft swiperight", e => {
-      if (e.type === "swipeleft") {
-        let toRoute = this.$router.options.routes.filter(route => {
-          return route.meta.order === this.$route.meta.order + 1;
-        });
-        if (toRoute.length > 0) {
-          this.$router.push(toRoute[0]);
-        }
-      } else {
-        let toRoute = this.$router.options.routes.filter(route => {
-          return route.meta.order === this.$route.meta.order - 1;
-        });
-        if (toRoute.length > 0) {
-          this.$router.push(toRoute[0]);
-        }
-      }
+    const hammertime = new Hammer(this.$el);
+    let toRoute = [];
+    hammertime.on("swipeleft", () => {
+      toRoute = this.$router.options.routes.filter(route => {
+        return route.meta.order === this.$route.meta.order + 1;
+      });
+      if (toRoute.length > 0) this.$router.push(toRoute[0]);
+    });
+    hammertime.on("swiperight", () => {
+      toRoute = this.$router.options.routes.filter(route => {
+        return route.meta.order === this.$route.meta.order - 1;
+      });
+      if (toRoute.length > 0) this.$router.push(toRoute[0]);
     });
   }
 };
 </script>
 
 <style lang="scss">
-$yellow: #fbec55;
-$wblack: #2d1c2f;
-$texture: url("/assets/img/texture.png");
-$textureScale: 48px;
+@import "./assets/vars.scss";
 body {
   background-image: $texture;
   background-size: $textureScale $textureScale;
-  color: $wblack;
+  color: $steelBlue;
 }
-</style>
-
-<style lang="scss">
 .swipe-enter-active,
 .swipe-leave-active {
   position: absolute;
+  transition: all $swipeSpeed;
   width: 100%;
   z-index: 0;
-  transition: all 0.5s;
 }
 .left {
-  transform: translateX(-100%);
+  transform: translateX(-100vw);
 }
 .right {
-  transform: translateX(100%);
+  transform: translateX(100vw);
 }
 </style>

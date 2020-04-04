@@ -12,32 +12,34 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-nav#bottom-bar {
-  position: fixed;
-  backface-visibility: hidden;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 100vw;
-  height: 50px;
-  border: 1px solid #000;
+@import "../assets/vars.scss";
+nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #fbec55;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100vw;
+  height: 50px;
+  background-image: $texture;
+  background-size: $textureScale $textureScale;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
   z-index: 10;
   a {
-    display: inline-block;
-    color: rgba($color: #2d1c2f, $alpha: 0.25);
-    transition: 0.4s;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     flex: 1;
+    height: 100%;
+    max-height: 100vw;
+    color: rgba($color: $steelBlue, $alpha: $navButtonsInactiveOpacity);
+    transition: $fadeSpeed;
     &.router-link-exact-active {
-      color: rgba($color: #2d1c2f, $alpha: 1);
+      color: rgba($color: $steelBlue, $alpha: 1);
     }
   }
 }
@@ -45,7 +47,7 @@ nav#bottom-bar {
 
 <style lang="scss" scoped>
 @media screen and (min-width: 768px) {
-  nav#bottom-bar {
+  nav {
     display: none;
   }
 }
