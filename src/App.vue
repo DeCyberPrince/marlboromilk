@@ -48,16 +48,21 @@ export default {
   methods: {
     afterEnter() {
       this.navAllowed = true;
-      console.log("afterEnter");
       const bottomBar = document.getElementById("bottom-bar");
       bottomBar.style.top = "";
     },
     beforeLeave() {
       this.navAllowed = false;
-      console.log("beforeLeave");
     }
   },
   mounted() {
+    // BLOCK NAV DURING ANIMATION
+    this.$router.beforeEach((to, from, next) => {
+      const bottomBar = document.getElementById("bottom-bar");
+      bottomBar.style.top = bottomBar.getBoundingClientRect().top + "px";
+      next(this.navAllowed);
+    });
+
     // SWIPES HANDLER
     if (window.screen.width >= 768) return undefined;
     const hammertime = new Hammer(this.$el);
@@ -73,11 +78,6 @@ export default {
         return route.meta.order === this.$route.meta.order - 1;
       });
       if (toRoute.length > 0) this.$router.push(toRoute[0]);
-    });
-
-    // BLOCK NAV DURING ANIMATION
-    this.$router.beforeEach((to, from, next) => {
-      next(this.navAllowed);
     });
   }
 };
@@ -98,9 +98,9 @@ body {
   z-index: 0;
 }
 .left {
-  transform: translateX(-100vw);
+  transform: translateX(-90vw);
 }
 .right {
-  transform: translateX(100vw);
+  transform: translateX(90vw);
 }
 </style>

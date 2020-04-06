@@ -8,14 +8,7 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    this.$router.beforeEach((to, from, next) => {
-      this.$el.style.top = this.$el.getBoundingClientRect().top + "px";
-      next();
-    });
-  }
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
