@@ -85,6 +85,9 @@ export default {
 
 <style lang="scss">
 @import "./assets/vars.scss";
+html {
+  background: $black;
+}
 body {
   background-image: $texture;
   background-size: $textureScale $textureScale;
@@ -102,5 +105,13 @@ body {
 }
 .right {
   transform: translateX(90vw);
+}
+</style>
+
+<style lang="scss">
+@media screen and (min-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
 }
 </style>
