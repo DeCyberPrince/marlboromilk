@@ -1,7 +1,7 @@
 <template>
-  <main id="merch">
+  <div id="merch">
     <h1>Merch</h1>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -9,9 +9,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-main {
-  height: 120vh;
+#merch {
   display: flex;
+  height: 150vh;
   justify-content: center;
   align-items: center;
   background: #141414;

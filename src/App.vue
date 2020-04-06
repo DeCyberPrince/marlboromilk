@@ -1,11 +1,19 @@
 <template>
   <div id="app">
     <top-bar />
-    <transition name="swipe" :enter-class="toSide" :leave-to-class="fromSide">
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </transition>
+    <main>
+      <transition
+        name="swipe"
+        :enter-class="toSide"
+        :leave-to-class="fromSide"
+        @after-enter="afterEnter"
+        @before-leave="beforeLeave"
+      >
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+      </transition>
+    </main>
     <bottom-bar />
   </div>
 </template>
@@ -18,7 +26,8 @@ export default {
   data() {
     return {
       fromSide: null,
-      toSide: null
+      toSide: null,
+      navAllowed: true
     };
   },
   components: {
@@ -36,7 +45,20 @@ export default {
       }
     }
   },
+  methods: {
+    afterEnter() {
+      this.navAllowed = true;
+      console.log("afterEnter");
+      const bottomBar = document.getElementById("bottom-bar");
+      bottomBar.style.top = "";
+    },
+    beforeLeave() {
+      this.navAllowed = false;
+      console.log("beforeLeave");
+    }
+  },
   mounted() {
+    // SWIPES HANDLER
     if (window.screen.width >= 768) return undefined;
     const hammertime = new Hammer(this.$el);
     let toRoute = [];
@@ -52,6 +74,11 @@ export default {
       });
       if (toRoute.length > 0) this.$router.push(toRoute[0]);
     });
+
+    // BLOCK NAV DURING ANIMATION
+    this.$router.beforeEach((to, from, next) => {
+      next(this.navAllowed);
+    });
   }
 };
 </script>
@@ -66,7 +93,7 @@ body {
 .swipe-enter-active,
 .swipe-leave-active {
   position: absolute;
-  transition: all $swipeSpeed;
+  transition: all $swipeSpeed linear;
   width: 100%;
   z-index: 0;
 }

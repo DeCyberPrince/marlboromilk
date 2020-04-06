@@ -1,7 +1,7 @@
 <template>
-  <main id="gfx">
+  <div id="gfx">
     <h1>GFX</h1>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -9,9 +9,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-main {
-  height: 120vh;
+#gfx {
   display: flex;
+  height: 150vh;
   justify-content: center;
   align-items: center;
   background: #141414;

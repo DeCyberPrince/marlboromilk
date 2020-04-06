@@ -1,7 +1,7 @@
 <template>
-  <main id="covers">
+  <div id="covers">
     <h1>Covers</h1>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -9,9 +9,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-main {
-  height: 120vh;
+#covers {
   display: flex;
+  height: 150vh;
   justify-content: center;
   align-items: center;
   background: #141414;

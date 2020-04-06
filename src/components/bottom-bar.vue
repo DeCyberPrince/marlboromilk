@@ -1,14 +1,21 @@
 <template>
   <nav id="bottom-bar">
-    <router-link :to="{ name: 'Covers' }">A</router-link>
-    <router-link :to="{ name: 'GFX' }">B</router-link>
-    <router-link :to="{ name: 'merch' }">C</router-link>
-    <router-link :to="{ name: 'contacts' }">D</router-link>
+    <router-link :to="{ name: 'covers' }">C</router-link>
+    <router-link :to="{ name: 'gfx' }">G</router-link>
+    <router-link :to="{ name: 'merch' }">M</router-link>
+    <router-link :to="{ name: 'contacts' }">C</router-link>
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    this.$router.beforeEach((to, from, next) => {
+      this.$el.style.top = this.$el.getBoundingClientRect().top + "px";
+      next();
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>

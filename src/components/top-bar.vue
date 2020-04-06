@@ -4,10 +4,10 @@
       <img src="/assets/img/logo.png" alt="MARLBOROMILK" />
     </div>
     <nav id="top-nav">
-      <router-link :to="{ name: 'Covers' }">COVERS</router-link>
-      <router-link :to="{ name: 'GFX' }">GFX</router-link>
-      <router-link :to="{ name: 'merch' }">MERCH</router-link>
-      <router-link :to="{ name: 'contacts' }">CONTACTS</router-link>
+      <router-link :to="{ name: 'covers' }">Covers</router-link>
+      <router-link :to="{ name: 'gfx' }">GFX</router-link>
+      <router-link :to="{ name: 'merch' }">Merch</router-link>
+      <router-link :to="{ name: 'contacts' }">Contacts</router-link>
     </nav>
   </header>
 </template>

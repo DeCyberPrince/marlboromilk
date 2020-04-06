@@ -10,13 +10,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Covers",
+    name: "covers",
     component: Covers,
     meta: { order: 1 }
   },
   {
-    path: "/GFX",
-    name: "GFX",
+    path: "/gfx",
+    name: "gfx",
     component: GFX,
     meta: { order: 2 }
   },
