@@ -1,9 +1,9 @@
 <template>
   <nav id="bottom-bar">
-    <router-link :to="{ name: 'covers' }">C</router-link>
-    <router-link :to="{ name: 'gfx' }">G</router-link>
-    <router-link :to="{ name: 'merch' }">M</router-link>
-    <router-link :to="{ name: 'contacts' }">C</router-link>
+    <router-link :to="{ name: 'covers' }">&#8864;</router-link>
+    <router-link :to="{ name: 'gfx' }">&#8864;</router-link>
+    <router-link :to="{ name: 'merch' }">&#8864;</router-link>
+    <router-link :to="{ name: 'contacts' }">&#8864;</router-link>
   </nav>
 </template>
 
@@ -35,7 +35,7 @@ nav {
     height: 100%;
     max-height: 100vw;
     color: rgba($color: $steelBlue, $alpha: $navButtonsInactiveOpacity);
-    transition: $fadeSpeed;
+    transition: $bottomBarIconsFadeSpeed;
     &.router-link-exact-active {
       color: rgba($color: $steelBlue, $alpha: 1);
     }

@@ -58,6 +58,7 @@ header {
         color: rgba($color: $steelBlue, $alpha: $navButtonsInactiveOpacity);
         margin: 0 1rem;
         transition: 0.4s;
+        user-select: none;
         &.router-link-exact-active {
           color: rgba($color: $steelBlue, $alpha: 1);
         }

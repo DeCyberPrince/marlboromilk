@@ -14,6 +14,7 @@
         </keep-alive>
       </transition>
     </main>
+
     <bottom-bar />
   </div>
 </template>
@@ -22,6 +23,7 @@
 import Hammer from "hammerjs";
 import topBar from "@/components/top-bar";
 import bottomBar from "@/components/bottom-bar";
+
 export default {
   data() {
     return {
@@ -33,6 +35,11 @@ export default {
   components: {
     topBar,
     bottomBar
+  },
+  computed: {
+    bottomBar() {
+      return document.getElementById("bottom-bar");
+    }
   },
   watch: {
     $route(to, from) {
@@ -48,8 +55,7 @@ export default {
   methods: {
     afterEnter() {
       this.navAllowed = true;
-      const bottomBar = document.getElementById("bottom-bar");
-      bottomBar.style.top = "";
+      this.bottomBar.style.top = "";
     },
     beforeLeave() {
       this.navAllowed = false;
@@ -58,8 +64,9 @@ export default {
   mounted() {
     // BLOCK NAV DURING ANIMATION
     this.$router.beforeEach((to, from, next) => {
-      const bottomBar = document.getElementById("bottom-bar");
-      bottomBar.style.top = bottomBar.getBoundingClientRect().top + "px";
+      this.bottomBar.style.top = `${
+        this.bottomBar.getBoundingClientRect().top
+      }px`;
       next(this.navAllowed);
     });
 
@@ -92,26 +99,30 @@ body {
   background-image: $texture;
   background-size: $textureScale $textureScale;
   color: $steelBlue;
+  overflow-x: hidden;
+  margin-bottom: 50px;
+  margin-top: 56px;
 }
 .swipe-enter-active,
 .swipe-leave-active {
   position: absolute;
-  transition: all $swipeSpeed linear;
+  transition: all $swipeSpeed;
   width: 100%;
   z-index: 0;
 }
 .left {
-  transform: translateX(-90vw);
+  transform: translateX(-98vw);
 }
 .right {
-  transform: translateX(90vw);
+  transform: translateX(98vw);
 }
 </style>
 
 <style lang="scss">
 @media screen and (min-width: 768px) {
   body {
-    overflow-x: hidden;
+    margin-bottom: 0;
+    margin-top: 86px;
   }
 }
 </style>
