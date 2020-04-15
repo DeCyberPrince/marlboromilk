@@ -56,15 +56,15 @@ export default {
     }
   },
   mounted() {
-    // SWIPE HANDLER}
+    // SWIPE HANDLER
     if (window.screen.width <= 768) return undefined;
     const hammertime = new Hammer(this.$el);
-    hammertime.on("swipeleft", ev => {
+    hammertime.on("swipeleft", () => {
       if (this.currentPage < this.pageAmount) {
         this.currentPage++;
       }
     });
-    hammertime.on("swiperight", ev => {
+    hammertime.on("swiperight", () => {
       if (this.currentPage > 1) {
         this.currentPage--;
       }
@@ -75,48 +75,68 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/vars.scss";
-.list-slider-wrapper {
-  display: grid;
-  grid-auto-flow: column;
-  width: 100%;
-  grid-template-columns: 50%;
-  grid-template-rows: repeat(3, calc(100% / 3 - 3px));
-  grid-auto-columns: 50%;
-  align-items: center;
-  justify-items: center;
-  transition: $slow;
-  .list-slider-item {
-    margin: $coversGridGapMibile;
-    img {
-      width: 100%;
-    }
-  }
-}
-
 #list-slider {
   position: relative;
   overflow: hidden;
+  .list-slider-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 50%;
+    grid-auto-columns: 50%;
+    grid-template-rows: repeat(3, calc(100% / 3));
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    transition: $slow;
+    .list-slider-item {
+      height: 100%;
+      width: 100%;
+      &:nth-child(6n + 1),
+      &:nth-child(6n + 2),
+      &:nth-child(6n + 3) {
+        padding-right: calc(#{$coversGridGapMibile} / 2);
+      }
+      &:nth-child(6n + 4),
+      &:nth-child(6n + 5),
+      &:nth-child(6n + 6) {
+        padding-left: calc(#{$coversGridGapMibile} / 2);
+      }
+      &:nth-child(6n + 1),
+      &:nth-child(6n + 4) {
+        padding-bottom: calc(#{$coversGridGapMibile} / 2);
+      }
+      &:nth-child(6n + 2),
+      &:nth-child(6n + 5) {
+        padding-top: calc(#{$coversGridGapMibile} / 2);
+        padding-bottom: calc(#{$coversGridGapMibile} / 2);
+      }
+      &:nth-child(6n + 3),
+      &:nth-child(6n + 6) {
+        padding-top: calc(#{$coversGridGapMibile} / 2);
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
   .pagination {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transform: translateY(-50%);
     .dots {
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
+      padding: 1rem;
       .dot {
-        height: 1rem;
-        width: 1rem;
+        height: 0.5rem;
+        width: 0.5rem;
         border-radius: 50%;
         background: rgba($color: $black, $alpha: $paginatorOpacity);
         transition: $slow;
@@ -124,6 +144,8 @@ export default {
         margin: 0 0.2rem;
         &.active {
           box-shadow: inset 0 0 0 1rem $yellow;
+          height: 1rem;
+          width: 1rem;
         }
       }
     }
@@ -132,7 +154,8 @@ export default {
       padding: 0.5rem;
       font-size: 2rem;
       color: $yellow;
-      transition: $slow;
+      transition: $fast;
+      align-self: center;
       &:disabled {
         opacity: 0;
       }
@@ -145,19 +168,56 @@ export default {
 @import "../assets/vars.scss";
 
 @media screen and (min-width: 768px) {
-  .list-slider-wrapper {
-    grid-template-columns: calc(100% / 3);
-    grid-template-rows: repeat(2, calc(50% - 3px));
-    grid-auto-columns: calc(100% / 3);
-    .list-slider-item {
-      margin: $coversGridGapDesktop;
-    }
-  }
   #list-slider {
+    .list-slider-wrapper {
+      grid-template-columns: calc(100% / 3);
+      grid-auto-columns: calc(100% / 3);
+      grid-template-rows: repeat(2, 50%);
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+      transition: $slow;
+      .list-slider-item {
+        height: 100%;
+        width: 100%;
+        &:nth-child(1n) {
+          padding: 0;
+        }
+        &:nth-child(6n + 1),
+        &:nth-child(6n + 3),
+        &:nth-child(6n + 5) {
+          padding-bottom: calc(#{$coversGridGapDesktop} / 2);
+        }
+        &:nth-child(6n + 2),
+        &:nth-child(6n + 4),
+        &:nth-child(6n + 6) {
+          padding-top: calc(#{$coversGridGapDesktop} / 2);
+        }
+        &:nth-child(6n + 1),
+        &:nth-child(6n + 2) {
+          padding-right: calc(#{$coversGridGapDesktop} / 2);
+        }
+        &:nth-child(6n + 3),
+        &:nth-child(6n + 4) {
+          padding-left: calc(#{$coversGridGapDesktop} / 2);
+          padding-right: calc(#{$coversGridGapDesktop} / 2);
+        }
+        &:nth-child(6n + 5),
+        &:nth-child(6n + 6) {
+          padding-left: calc(#{$coversGridGapDesktop} / 2);
+        }
+      }
+    }
     .pagination {
-      transform: translateY(-50.7%);
+      justify-content: center;
       .dots {
-        bottom: 1.5rem;
+        .dot {
+          &.active {
+          }
+        }
+      }
+      button {
+        align-self: flex-end;
       }
     }
   }

@@ -33,31 +33,16 @@ export default {
   background: $black;
   color: $yellow;
   overflow: hidden;
-  main {
-    margin: $coversGridMarginMibile;
-  }
 }
 </style>
 
 <style lang="scss" scoped>
 @import "../assets/vars.scss";
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   #covers {
     main {
-      margin: $coversGridMarginDesktop;
-    }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-@import "../assets/vars.scss";
-
-@media screen and (min-width: 768px) {
-  #covers {
-    main {
-      margin: $coversGridMarginDesktop 10vw;
+      padding: 0 100px;
     }
   }
 }
