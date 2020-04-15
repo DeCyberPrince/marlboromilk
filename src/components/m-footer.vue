@@ -6,7 +6,7 @@
       <span>&#8864;</span>
     </div>
     <div class="watermark">
-      <span>&#169; 2020 marlboromilk rights reserved</span>
+      <span>&#169; 2020 marlboromilk all rights reserved</span>
     </div>
   </footer>
 </template>
@@ -21,7 +21,6 @@ footer {
   background-image: $texture;
   background-size: $textureScale $textureScale;
   color: $steelBlue;
-  font-size: 18px;
   width: 100%;
   .soc-links,
   .watermark {

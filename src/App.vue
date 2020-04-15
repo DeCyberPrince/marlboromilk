@@ -96,8 +96,7 @@ html {
   background: $black;
 }
 body {
-  background-image: $texture;
-  background-size: $textureScale $textureScale;
+  background: $black;
   color: $steelBlue;
   overflow-x: hidden;
   margin-bottom: 50px;
@@ -111,10 +110,10 @@ body {
   z-index: 0;
 }
 .left {
-  transform: translateX(-98vw);
+  transform: translateX(-100vw);
 }
 .right {
-  transform: translateX(98vw);
+  transform: translateX(100vw);
 }
 </style>
 
