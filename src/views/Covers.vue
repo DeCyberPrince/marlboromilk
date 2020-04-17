@@ -1,7 +1,7 @@
 <template>
   <div id="covers">
     <main>
-      <list-slider :items="covers" />
+      <list-slider :img="true" :items="covers" />
     </main>
     <m-footer />
   </div>

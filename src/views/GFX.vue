@@ -1,15 +1,28 @@
 <template>
   <div id="gfx">
-    <h1>GFX</h1>
+    <main>
+      <list-slider :video="true" :items="gfxs" />
+    </main>
     <m-footer />
   </div>
 </template>
 
 <script>
 import mFooter from "@/components/m-footer";
+import listSlider from "@/components/list-slider";
 export default {
+  data() {
+    return {
+      gfxs: []
+    };
+  },
   components: {
-    mFooter
+    mFooter,
+    listSlider
+  },
+  async mounted() {
+    const response = await fetch("/assets/data/gfxs.json");
+    this.gfxs = await response.json();
   }
 };
 </script>
@@ -19,8 +32,17 @@ export default {
 div {
   background: $black;
   color: $yellow;
-  h1 {
-    height: 80vh;
+}
+</style>
+
+<style lang="scss" scoped>
+@import "../assets/vars.scss";
+
+@media screen and (min-width: 1440px) {
+  #gfx {
+    main {
+      padding: 0 100px;
+    }
   }
 }
 </style>

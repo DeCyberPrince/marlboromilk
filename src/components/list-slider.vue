@@ -5,7 +5,19 @@
       :style="`transform: translateX(-${currentPage * 100 - 100}%);`"
     >
       <div class="list-slider-item" v-for="item in items" :key="item.id">
-        <img :src="`/assets/img/${item.filename}`" alt="cover-1" />
+        <img
+          v-if="img"
+          draggable="false"
+          :src="`/assets/img/${item.filename}`"
+          alt="cover-1"
+        />
+        <video
+          v-if="video"
+          :src="`/assets/video/${item.filename}`"
+          muted
+          @mouseenter="play"
+          @mouseleave="stop"
+        ></video>
       </div>
     </div>
     <div class="pagination">
@@ -37,7 +49,9 @@ export default {
     };
   },
   props: {
-    items: Array
+    items: Array,
+    img: Boolean,
+    video: Boolean
   },
   computed: {
     pageAmount() {
@@ -53,18 +67,26 @@ export default {
     },
     goToPage(page) {
       this.currentPage = page;
+    },
+    play(e) {
+      e.currentTarget.play();
+    },
+    stop(e) {
+      e.currentTarget.currentTime = 0;
+      e.currentTarget.pause();
     }
   },
   mounted() {
     // SWIPE HANDLER
-    if (window.screen.width <= 768) return undefined;
     const hammertime = new Hammer(this.$el);
     hammertime.on("swipeleft", () => {
+      console.log("swipe");
       if (this.currentPage < this.pageAmount) {
         this.currentPage++;
       }
     });
     hammertime.on("swiperight", () => {
+      console.log("swipe");
       if (this.currentPage > 1) {
         this.currentPage--;
       }
@@ -83,7 +105,7 @@ export default {
     grid-auto-flow: column;
     grid-template-columns: 50%;
     grid-auto-columns: 50%;
-    grid-template-rows: repeat(3, calc(100% / 3));
+    grid-template-rows: repeat(3, auto);
     align-items: center;
     justify-items: center;
     width: 100%;
@@ -114,9 +136,11 @@ export default {
       &:nth-child(6n + 6) {
         padding-top: calc(#{$coversGridGapMibile} / 2);
       }
-      img {
+      img,
+      video {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
   }
@@ -129,11 +153,13 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
     .dots {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1rem;
+      pointer-events: auto;
       .dot {
         height: 0.5rem;
         width: 0.5rem;
@@ -156,6 +182,7 @@ export default {
       color: $yellow;
       transition: $fast;
       align-self: center;
+      pointer-events: auto;
       &:disabled {
         opacity: 0;
       }
