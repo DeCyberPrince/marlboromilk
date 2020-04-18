@@ -80,13 +80,11 @@ export default {
     // SWIPE HANDLER
     const hammertime = new Hammer(this.$el);
     hammertime.on("swipeleft", () => {
-      console.log("swipe");
       if (this.currentPage < this.pageAmount) {
         this.currentPage++;
       }
     });
     hammertime.on("swiperight", () => {
-      console.log("swipe");
       if (this.currentPage > 1) {
         this.currentPage--;
       }
@@ -99,6 +97,7 @@ export default {
 @import "../assets/vars.scss";
 #list-slider {
   position: relative;
+  padding: $coversGridGapMibile;
   overflow: hidden;
   .list-slider-wrapper {
     display: grid;
@@ -113,29 +112,7 @@ export default {
     .list-slider-item {
       height: 100%;
       width: 100%;
-      &:nth-child(6n + 1),
-      &:nth-child(6n + 2),
-      &:nth-child(6n + 3) {
-        padding-right: calc(#{$coversGridGapMibile} / 2);
-      }
-      &:nth-child(6n + 4),
-      &:nth-child(6n + 5),
-      &:nth-child(6n + 6) {
-        padding-left: calc(#{$coversGridGapMibile} / 2);
-      }
-      &:nth-child(6n + 1),
-      &:nth-child(6n + 4) {
-        padding-bottom: calc(#{$coversGridGapMibile} / 2);
-      }
-      &:nth-child(6n + 2),
-      &:nth-child(6n + 5) {
-        padding-top: calc(#{$coversGridGapMibile} / 2);
-        padding-bottom: calc(#{$coversGridGapMibile} / 2);
-      }
-      &:nth-child(6n + 3),
-      &:nth-child(6n + 6) {
-        padding-top: calc(#{$coversGridGapMibile} / 2);
-      }
+      padding: $coversGridGapMibile;
       img,
       video {
         width: 100%;
@@ -199,50 +176,10 @@ export default {
     .list-slider-wrapper {
       grid-template-columns: calc(100% / 3);
       grid-auto-columns: calc(100% / 3);
-      grid-template-rows: repeat(2, 50%);
-      align-items: center;
-      justify-items: center;
-      width: 100%;
-      transition: $slow;
-      .list-slider-item {
-        height: 100%;
-        width: 100%;
-        &:nth-child(1n) {
-          padding: 0;
-        }
-        &:nth-child(6n + 1),
-        &:nth-child(6n + 3),
-        &:nth-child(6n + 5) {
-          padding-bottom: calc(#{$coversGridGapDesktop} / 2);
-        }
-        &:nth-child(6n + 2),
-        &:nth-child(6n + 4),
-        &:nth-child(6n + 6) {
-          padding-top: calc(#{$coversGridGapDesktop} / 2);
-        }
-        &:nth-child(6n + 1),
-        &:nth-child(6n + 2) {
-          padding-right: calc(#{$coversGridGapDesktop} / 2);
-        }
-        &:nth-child(6n + 3),
-        &:nth-child(6n + 4) {
-          padding-left: calc(#{$coversGridGapDesktop} / 2);
-          padding-right: calc(#{$coversGridGapDesktop} / 2);
-        }
-        &:nth-child(6n + 5),
-        &:nth-child(6n + 6) {
-          padding-left: calc(#{$coversGridGapDesktop} / 2);
-        }
-      }
+      grid-template-rows: repeat(2, auto);
     }
     .pagination {
       justify-content: center;
-      .dots {
-        .dot {
-          &.active {
-          }
-        }
-      }
       button {
         align-self: flex-end;
       }
