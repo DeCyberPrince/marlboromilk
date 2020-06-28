@@ -1,0 +1,23 @@
+$breakpoints: (
+  "md": 767px,
+  "lg": 992px,
+  "xl": 1200px
+);
+
+$header-height: (
+  "mobile": 56px,
+  "desktop": 86px
+);
+$bottom-nav-height: 50px;
+
+// colors
+$primary: #fbec55;
+$secondary: #141414;
+$active: $secondary;
+$passive: rgba($secondary, 0.5);
+
+// speeds
+$fast: 0.15s;
+$normal: 0.3s;
+$normal-plus: 0.5s;
+$slow: 1s;
