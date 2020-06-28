@@ -9,9 +9,10 @@ $header-height: (
   "desktop": 86px
 );
 $bottom-nav-height: 50px;
+$bottom-nav-space: 1.3rem;
 
 // colors
-$primary: #fbec55;
+$primary: #ffef56;
 $secondary: #141414;
 $active: $secondary;
 $passive: rgba($secondary, 0.5);

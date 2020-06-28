@@ -20,7 +20,6 @@ export default {
 <style lang="scss" scoped>
 nav {
   position: fixed;
-  // top: calc(100vh - #{$bottom-nav-height});
   bottom: 0;
   left: 0;
   height: $bottom-nav-height;
@@ -31,7 +30,10 @@ nav {
   align-items: center;
   a {
     display: flex;
-    margin: 0 1rem 0 1rem;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $bottom-nav-space 0 $bottom-nav-space;
     transition: $normal;
     font-size: 1.5rem;
     color: $passive;
