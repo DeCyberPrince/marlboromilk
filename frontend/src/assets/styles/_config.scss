@@ -13,8 +13,9 @@ $bottom-nav-space: 1.3rem;
 // colors
 $primary: #ffef56;
 $secondary: #141414;
+$semitransparent: 0.2;
 $active: $secondary;
-$passive: rgba($secondary, 0.5);
+$passive: rgba($secondary, $semitransparent);
 $insta: #e4405f;
 $vk: #4c75a3;
 $tg: #0088cc;
