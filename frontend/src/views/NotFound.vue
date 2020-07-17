@@ -13,20 +13,11 @@ export default {
 <style lang="scss" scoped>
 #page404 {
   text-align: center;
-  min-height: calc(
-    100vh -
-      (
-        #{map-get($header-height, mobile)} + #{$bottom-nav-height} + #{$footer-height}
-      )
-  );
   overflow: hidden;
 }
 </style>
 
 <style lang="scss" scoped>
 @include media(md) {
-  #page404 {
-    min-height: calc(100vh - (#{map-get($header-height, desktop)} + #{$footer-height}));
-  }
 }
 </style>
