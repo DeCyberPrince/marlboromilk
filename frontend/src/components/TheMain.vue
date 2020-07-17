@@ -1,7 +1,12 @@
 <template>
   <div>
     <main>
-      <transition :name="`swipe-${swipeSide}`" mode="out-in">
+      <transition
+        :name="swipeSide"
+        @after-enter="unblockNav"
+        @before-leave="blockNav"
+        mode="out-in"
+      >
         <keep-alive>
           <routerView />
         </keep-alive>
@@ -13,6 +18,8 @@
 
 <script>
 import TheFooter from "@/components/TheFooter";
+import swiper from "@/assets/js/swiper";
+import nav from "@/assets/js/nav";
 
 export default {
   name: "TheMain",
@@ -22,10 +29,27 @@ export default {
   data: () => ({
     swipeSide: null
   }),
+  methods: {
+    blockNav() {
+      nav.navAllowed = false;
+    },
+    unblockNav() {
+      nav.navAllowed = true;
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.swipeSide =
+        to.meta?.order - from.meta?.order < 0 ? "swipe-right" : "swipe-left";
+    }
+  },
   mounted() {
-    this.$router.beforeEach((to, from, next) => {
-      this.swipeSide = to.meta?.order - from.meta?.order < 0 ? "right" : "left";
-      next();
+    const main = this.$el;
+    swiper.left(main, () => {
+      nav.goBySide(+1);
+    });
+    swiper.right(main, () => {
+      nav.goBySide(-1);
     });
   }
 };

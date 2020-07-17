@@ -14,6 +14,7 @@ export default {
 footer {
   background: $primary;
   padding: 1rem;
+  height: $footer-height;
   margin-bottom: $bottom-nav-height;
   h4 {
     text-align: center;

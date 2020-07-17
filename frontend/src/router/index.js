@@ -1,9 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import nav from "@/assets/js/nav";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "*",
+    name: "NotFound",
+    component: () => import("../views/NotFound.vue")
+  },
   {
     path: "/",
     name: "Covers",
@@ -34,8 +40,12 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
-  scrollBehavior() {
-    return { x: 0, y: 0 };
+  scrollBehavior: () => ({ x: 0, y: 0 })
+});
+
+router.beforeEach((to, from, next) => {
+  if (nav.navAllowed) {
+    next();
   }
 });
 

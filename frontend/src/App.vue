@@ -16,15 +16,6 @@ export default {
     TheHeader,
     TheMain,
     TheBottomNav
-  },
-  mounted() {
-    window.addEventListener("resize", () => {
-      const newViewportHeight = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0
-      );
-      this.height = newViewportHeight;
-    });
   }
 };
 </script>
